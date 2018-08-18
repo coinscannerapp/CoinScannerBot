@@ -13,7 +13,7 @@
      ` cd <projectname> `
      `pipenv --python 3.6` sets up the project to be a virtual environment with dependecies managed by pipenv.
      `pipenv shell` activates the virtual environment (must be done in terminal first thing every time) 
-    Before running `pipenv install` fix the twisted 18.4.0 package
+     `pipenv install http://fstab.net//pypi//simple//twisted//Twisted-18.4.0-cp36-cp36m-win_amd64.whl`  - Twisted 18.4.0 package has problems if you just run `pipenv install` thus this fix
      `pipenv install <packagename>` installs the python package into the virtual environment and writes it to the pipfile
      `pipenv uninstall --all-dev <package name>` removes package both from env and from pipfile
      `pipenv lock` creates a file: pipfile.lock to ensure deterministic builds (that all dependencies are exactly the right versions)
