@@ -9,7 +9,7 @@
 
 ### Challenges to resolve
 - How to deploy python application on droplet with all the dependencies 
-    - Using pipenv
+    Using pipenv
      - ` cd <projectname> `
      - `pipenv --python 3.6` sets up the project to be a virtual environment with dependecies managed by pipenv.
      - `pipenv shell` activates the virtual environment (must be done in terminal first thing every time) 
