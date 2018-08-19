@@ -39,7 +39,7 @@ class KlineData(object):
         return self._lowPrice
     def volume(self, t = None): 
         if t: self._volume = t 
-        return self._volumen
+        return self._volume
     def priceDiff(self): 
         self._priceDiff = self._closePrice - self._openPrice
         return self._priceDiff

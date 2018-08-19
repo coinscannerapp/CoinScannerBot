@@ -8,6 +8,7 @@ pytest = "*"
 requests = "*"
 python-binance = "*"
 twisted = {file = "http://fstab.net//pypi//simple//twisted//Twisted-18.4.0-cp36-cp36m-win_amd64.whl"}
+mysql-connector-python-rf = "*"
 
 [dev-packages]
 pylint = "*"

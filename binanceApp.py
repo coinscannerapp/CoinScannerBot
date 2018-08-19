@@ -92,4 +92,4 @@ def createBases(klinelist):
     return listOfBases
             
 
-if __name__ == '__main__': main()
+main()
