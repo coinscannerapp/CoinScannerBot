@@ -1,6 +1,7 @@
-from lib import getDataModule as getData
-from lib import utilModule as util 
-from lib import entitiesModule as entities
+from lib.data_fetch_modules import get_data_module
+from lib.helper_modules import util_module as util 
+from lib.entities import kline_data
+from lib.entities import price_move
 from lib import constants
 # external
 from binance.client import Client
@@ -16,8 +17,8 @@ KLINE_INTERVAL = Client.KLINE_INTERVAL_1HOUR
 client = Client(constants.KEY, constants.SECRET) # create the Binance client, no need for api key to just read data
 
 def main():
-    klines = getData.get_historical_klines(client, constants.SYMBOL, KLINE_INTERVAL, constants.START, constants.END)
-    klinelist = populateKlineList(klines)
+    klines = get_data_module.get_historical_klines(client, constants.SYMBOL, KLINE_INTERVAL, constants.START, constants.END)
+    kline_list = populate_kline_list(klines)
     # listOfMoves = populatePriceMoveList(klinelist)
     # for move in listOfMoves:
     #     if move.percentDiff() < -10:
@@ -25,20 +26,20 @@ def main():
     #     elif move.percentDiff() > 10:
     #         print(f'{move.startTime()} has {move.percentDiff()}% raise in {move.durationHours()} hours')
     
-    print(f'LENGTH OF LIST {len(klinelist)}')
-    # listOfBases = createBases(klinelist)
+    print(f'LENGTH OF LIST {len(kline_list)}')
+    # listOfBases = createBases(kline_list)
     # print(f'LENGTH OF BASES LIST {len(listOfBases)}')
     # for base in listOfBases:
     #     print(f'BASE: {base.startTime()}')
-    # util.writeList2File(klinelist, KLINE_INTERVAL)
-    powerMoves = filterPowerMoves(populatePriceMoveList(klinelist))
-    print(f'LENGTH OF LIST {len(powerMoves)}')
+    # util.writeList2File(kline_list, KLINE_INTERVAL)
+    power_moves = filter_power_moves(populate_price_move_list(kline_list))
+    print(f'LENGTH OF LIST {len(power_moves)}')
 
     
-def populateKlineList(klines):
-        klinelist = []
+def populate_kline_list(klines):
+        kline_list = []
         for kline in klines:
-            klineObj = entities.KlineData(
+            klineObj = kline_data.KlineData(
                 symbol = constants.SYMBOL,
                 OpenTime= kline[0],
                 OpenPrice = kline[1],
@@ -50,46 +51,46 @@ def populateKlineList(klines):
                 QuoteAssetVol = kline[7],
                 NumberOfTrades = kline[8],
             )
-            klinelist.append(klineObj)
-        return klinelist
+            kline_list.append(klineObj)
+        return kline_list
 
-def populatePriceMoveList(klinelist):
-    listOfMoves = list()
-    priceMove = entities.PriceMove()
-    for k in klinelist:
-        if not priceMove.addKline(k): #if addKline returns false its time to start a new PriceMove
-            listOfMoves.append(priceMove)
-            priceMove = entities.PriceMove()
-            priceMove.addKline(k)
-    return listOfMoves
+def populate_price_move_list(kline_list):
+    list_of_moves = list()
+    price_move_Obj = price_move.PriceMove()
+    for k in kline_list:
+        if not price_move_Obj.addKline(k): #if addKline returns false its time to start a new PriceMove
+            list_of_moves.append(price_move_Obj)
+            price_move_Obj = price_move.PriceMove()
+            price_move_Obj.addKline(k)
+    return list_of_moves
 
-def filterPowerMoves(listOfMoves):
-    powerMoves = list()
-    for m in listOfMoves:
+def filter_power_moves(list_of_moves):
+    power_moves = list()
+    for m in list_of_moves:
         if m.isPowerMove():
             print('POWER MOOOOOOOVE')
-            powerMoves.append(m)
-    return powerMoves
+            power_moves.append(m)
+    return power_moves
 
 
 
-def createBases(klinelist):
-    listOfBases = list()
-    priceMove = entities.PriceMove()
-    lastPowerMove = None
-    for k in klinelist:
-        if not priceMove.addKline(k): #if addKline returns false its time to start a new PriceMove
-            if priceMove.isPowerMove():
+def create_bases(kline_list):
+    list_of_bases = list()
+    price_move_Obj = price_move.PriceMove()
+    last_power_move = None
+    for k in kline_list:
+        if not price_move_Obj.addKline(k): #if addKline returns false its time to start a new PriceMove
+            if price_move_Obj.isPowerMove():
                 print('POWERMOVE')
-                if lastPowerMove != None:
+                if last_power_move != None:
                     print('NOT None')
-                    base = priceMove.createBase(lastPowerMove)
+                    base = price_move_Obj.createBase(last_power_move)
                     if(base != None):
-                        listOfBases.append(base)
-                lastPowerMove = priceMove
-                priceMove = entities.PriceMove()
-                priceMove.addKline(k)
-    return listOfBases
+                        list_of_bases.append(base)
+                last_power_move = price_move_Obj
+                price_move_Obj = price_move.PriceMove()
+                price_move_Obj.addKline(k)
+    return list_of_bases
             
 
 if __name__ == '__main__': main()

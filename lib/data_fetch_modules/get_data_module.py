@@ -1,9 +1,6 @@
-#!/usr/bin/python
-# Filename: getDataModule.py
-
 from datetime import datetime
 import time
-from lib import utilModule as util
+from lib.helper_modules import util_module as util
 from lib import constants
 
 # TAKEN FROM: https://sammchardy.github.io/binance/2018/01/08/historical-data-download-binance.html

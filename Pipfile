@@ -11,6 +11,7 @@ twisted = {file = "http://fstab.net//pypi//simple//twisted//Twisted-18.4.0-cp36-
 
 [dev-packages]
 pylint = "*"
+rope = "*"
 
 [requires]
 python_version = "3.6"

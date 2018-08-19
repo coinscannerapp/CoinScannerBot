@@ -1,7 +1,9 @@
 import binanceApp
 from datetime import datetime
-from lib import entitiesModule as entities 
-kline1 = entities.KlineData(
+from lib.entities import kline_data
+from lib.entities import price_move
+
+kline1 = kline_data.KlineData(
     symbol = 'BTCUSDT',
     OpenTime= 1527480000000,
     OpenPrice = '7000.00000000',
@@ -13,7 +15,7 @@ kline1 = entities.KlineData(
     QuoteAssetVol = '12944855.34880205',
     NumberOfTrades = 15272,
 )
-kline2 = entities.KlineData(
+kline2 = kline_data.KlineData(
     symbol = 'BTCUSDT',
     OpenTime= 1527483600000,
     OpenPrice = '7400.00000000',
@@ -25,7 +27,7 @@ kline2 = entities.KlineData(
     QuoteAssetVol = '12944855.34880205',
     NumberOfTrades = 15272,
 )
-kline3 = entities.KlineData(
+kline3 = kline_data.KlineData(
     symbol = 'BTCUSDT',
     OpenTime= 1527487200000,
     OpenPrice = '7800.00000000', 
@@ -37,7 +39,7 @@ kline3 = entities.KlineData(
     QuoteAssetVol = '12944855.34880205',
     NumberOfTrades = 15272,
 )
-kline4 = entities.KlineData(
+kline4 = kline_data.KlineData(
     symbol = 'BTCUSDT',
     OpenTime= 1527490800000,
     OpenPrice = '7500.00000000', 
@@ -49,7 +51,7 @@ kline4 = entities.KlineData(
     QuoteAssetVol = '12944855.34880205',
     NumberOfTrades = 15272,
 )
-kline5 = entities.KlineData(
+kline5 = kline_data.KlineData(
     symbol = 'BTCUSDT',
     OpenTime= 1527494400000,
     OpenPrice = '6800.00000000', 
@@ -61,7 +63,7 @@ kline5 = entities.KlineData(
     QuoteAssetVol = '12944855.34880205',
     NumberOfTrades = 15272,
 )
-kline6 = entities.KlineData(
+kline6 = kline_data.KlineData(
     symbol = 'BTCUSDT',
     OpenTime= 1527498000000,
     OpenPrice = '7100.00000000', 
@@ -73,7 +75,7 @@ kline6 = entities.KlineData(
     QuoteAssetVol = '12944855.34880205',
     NumberOfTrades = 15272,
 )
-kline7= entities.KlineData(
+kline7= kline_data.KlineData(
     symbol = 'BTCUSDT',
     OpenTime= 1527501600000,
     OpenPrice = '7100.00000000', 
@@ -88,20 +90,20 @@ kline7= entities.KlineData(
 
 
 def test_IsFirstKline():
-    priceMove = entities.PriceMove()
+    priceMove = price_move.PriceMove()
     result = priceMove.isFirstKline()
     expected = True
     assert expected == result 
 
 def test_NotFirstKline():
-    priceMove = entities.PriceMove()
+    priceMove = price_move.PriceMove()
     priceMove.addKline(kline1)
     result = priceMove.isFirstKline()
     expected = False
     assert expected == result
 
 def test_PriceDiff():
-    priceMove = entities.PriceMove()
+    priceMove = price_move.PriceMove()
     priceMove.addKline(kline1)
     priceMove.addKline(kline2)
     result = priceMove.priceDiff()
@@ -109,7 +111,7 @@ def test_PriceDiff():
     assert expected == result
 
 def test_PriceDiffNegative():
-    priceMove = entities.PriceMove()
+    priceMove = price_move.PriceMove()
     priceMove.addKline(kline3)
     priceMove.addKline(kline4)
     result = priceMove.priceDiff()
@@ -117,7 +119,7 @@ def test_PriceDiffNegative():
     assert expected == result
 
 def test_PercentDiff():
-    priceMove = entities.PriceMove()
+    priceMove = price_move.PriceMove()
     priceMove.addKline(kline1)
     priceMove.addKline(kline2)
     result = priceMove.percentDiff()
@@ -125,7 +127,7 @@ def test_PercentDiff():
     assert expected == float(result)
 
 def test_PercentDiffNegative():
-    priceMove = entities.PriceMove()
+    priceMove = price_move.PriceMove()
     priceMove.addKline(kline3)
     priceMove.addKline(kline4)
     result = priceMove.percentDiff()
@@ -133,7 +135,7 @@ def test_PercentDiffNegative():
     assert expected == float(result)
 
 def test_PriceDiffSeveral():
-    priceMove = entities.PriceMove()
+    priceMove = price_move.PriceMove()
     priceMove.addKline(kline1)
     priceMove.addKline(kline2)
     priceMove.addKline(kline3)
@@ -143,14 +145,14 @@ def test_PriceDiffSeveral():
     assert expected == result
 
 def test_SameDirection():
-    priceMove = entities.PriceMove()
+    priceMove = price_move.PriceMove()
     priceMove.addKline(kline1)
     result = priceMove.klineIsSameDirection(kline2)
     expected = True
     assert expected == result
 
 def test_NotSameDirection():
-    priceMove = entities.PriceMove()
+    priceMove = price_move.PriceMove()
     priceMove.addKline(kline1)
     priceMove.addKline(kline2)
     result = priceMove.klineIsSameDirection(kline3)
@@ -158,7 +160,7 @@ def test_NotSameDirection():
     assert expected == result
 
 # def test_NotSameDirTwice():
-#     priceMove = entities.PriceMove()
+#     priceMove = price_move.PriceMove()
 #     priceMove.addKline(kline1)
 #     priceMove.addKline(kline2)
 #     priceMove.addKline(kline3)
@@ -170,21 +172,21 @@ def test_NotSameDirection():
 #     assert expected == result
 
 def test_Impact():
-    priceMove = entities.PriceMove()
+    priceMove = price_move.PriceMove()
     priceMove.addKline(kline1)
     result = priceMove.klineImpact(kline2)
     expected = 100
     assert expected == result
 
 def test_NegativeImpact():
-    priceMove = entities.PriceMove()
+    priceMove = price_move.PriceMove()
     priceMove.addKline(kline1)
     priceMove.addKline(kline2)
     result = priceMove.klineImpact(kline3)
     expected = -37.5
     assert expected == float(result)
 def test_durationSecs():
-    priceMove = entities.PriceMove()
+    priceMove = price_move.PriceMove()
     priceMove.addKline(kline1)
     priceMove.addKline(kline2)
     result = priceMove.durationSecs()
@@ -192,17 +194,17 @@ def test_durationSecs():
     expected = 60*60*2 # 2 hours
     assert expected == result
 def test_durationHours():
-    priceMove = entities.PriceMove()
+    priceMove = price_move.PriceMove()
     priceMove.addKline(kline1)
     priceMove.addKline(kline2)
     result = priceMove.durationHours()
     expected = 2
     assert expected == result
 def test_overloadedPlusOperator():
-    priceMove1 = entities.PriceMove()
+    priceMove1 = price_move.PriceMove()
     priceMove1.addKline(kline1)
     priceMove1.addKline(kline2)
-    priceMove2 = entities.PriceMove()
+    priceMove2 = price_move.PriceMove()
     priceMove2.addKline(kline3)
     priceMove2.addKline(kline4)
     combined = priceMove1 + priceMove2
@@ -216,7 +218,7 @@ def test_overloadedPlusOperator():
     assert combined.lowPrice() == 6700
     assert combined.highPrice() == 7800
 def test_isPowerMove():
-    priceMove = entities.PriceMove()
+    priceMove = price_move.PriceMove()
     priceMove.addKline(kline1)
     priceMove.addKline(kline2)
     result = priceMove.isPowerMove()
@@ -224,7 +226,7 @@ def test_isPowerMove():
     assert expected == result
 
 def test_notPowerMove():
-    priceMove = entities.PriceMove()
+    priceMove = price_move.PriceMove()
     priceMove.addKline(kline5)
     priceMove.addKline(kline6)
     result = priceMove.isPowerMove()
@@ -232,8 +234,8 @@ def test_notPowerMove():
     assert expected == result
 
 def test_hoursAppart():
-    priceMove1 = entities.PriceMove()
-    priceMove2 = entities.PriceMove()
+    priceMove1 = price_move.PriceMove()
+    priceMove2 = price_move.PriceMove()
     priceMove1.addKline(kline1)
     priceMove2.addKline(kline3)
     result = priceMove2.hoursAppart(priceMove1)
@@ -241,7 +243,7 @@ def test_hoursAppart():
     assert expected == result
 
 def test_isPowerRaise():
-    priceMove1 = entities.PriceMove()
+    priceMove1 = price_move.PriceMove()
     priceMove1.addKline(kline5)
     priceMove1.addKline(kline6) 
     priceMove1.addKline(kline7) #Now its a powerraise
@@ -252,8 +254,8 @@ def test_isPowerRaise():
     assert priceMove1.isPowerRaise() == True
 
 def test_createBase():
-    priceMove1 = entities.PriceMove()
-    priceMove2 = entities.PriceMove()
+    priceMove1 = price_move.PriceMove()
+    priceMove2 = price_move.PriceMove()
     priceMove1.addKline(kline3)
     priceMove1.addKline(kline4) #Now its a powerdrop
     priceMove2.addKline(kline5)
@@ -263,7 +265,3 @@ def test_createBase():
     assert priceMove2.isPowerRaise() == True
     assert priceMove1.isPowerDrop() == True
     assert base != None
-
-
-
-

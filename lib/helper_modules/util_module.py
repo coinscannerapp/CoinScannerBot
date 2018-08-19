@@ -1,5 +1,3 @@
-#!/usr/bin/python
-# Filename: utilModule.py
 from datetime import datetime
 import pytz
 import dateparser
