@@ -1,7 +1,8 @@
-from lib import getDataModule as getData
-from lib import utilModule as util 
+from lib.api import getDataModule as getData
+from lib.helperModules import utilModule as util 
+from lib.helperModules import helperModule as helper
 from lib import constants
-from lib import helperModule as helper
+from lib.bases import createBases as bases
 # external
 from binance.client import Client
 import json

@@ -3,7 +3,7 @@
 
 from datetime import datetime
 import time
-from lib import utilModule as util
+from lib.helperModules import utilModule as util
 from lib import constants
 
 # TAKEN FROM: https://sammchardy.github.io/binance/2018/01/08/historical-data-download-binance.html
