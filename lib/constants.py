@@ -10,3 +10,6 @@ MAX_KLINES_TO_FETCH = 5000
 MAX_DURATION = 10 #hours
 MIN_PRICE_DIFF = 10 #percent
 MAX_HOURS_APPART = 4
+
+## Visualisation
+VISUALIZE = True
