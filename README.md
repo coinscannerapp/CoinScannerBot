@@ -22,7 +22,12 @@
     - Configure visual code to use pipenv (to be able to debug and run code directly in terminal (without doing the `pipenv shell`))
         - https://olav.it/2017/03/04/pipenv-visual-studio-code/
     
-    
+### Visualization
+    For visualization of the klines change global variable constants.py 
+```python 
+    VISUALIZATION = True
+    ```
+
 ### Modules in python
     - Create a subdirectory named lib.
     - Create an empty file named lib\__init__.py.
