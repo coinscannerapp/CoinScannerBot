@@ -26,7 +26,7 @@
     For visualization of the klines change global variable constants.py 
 ```python 
     VISUALIZATION = True
-    ```
+```
 
 ### Modules in python
     - Create a subdirectory named lib.
