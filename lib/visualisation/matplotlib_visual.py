@@ -3,6 +3,15 @@ from lib import constants
 
 
 def create_plot(kline_list):
+    """
+    Creates a plot of the kline close prices, and kline close time
+
+    Params:
+    ----------------
+    kline_list : list
+        List of klines fetched form binance api
+
+    """
 
     # Labels
     plt.xlabel("Date")
@@ -20,26 +29,45 @@ def create_plot(kline_list):
 
 
 def sort_y(kline_list):
-    """ Sort all close prices for y-axis for the visualisation of graph
-    params: 
-    array : kline_list
-    return : array of y
+    """ 
+    Sort all close prices for y-axis for the visualisation of graph
+    
+    Params: 
+    ----------------
+    kline_list : list
+        List of klines
+
+    Returns : 
+    ----------------
+    []
+    Array of y coordinates(Close prices)
     """
 
     y = []
     for kline in kline_list:
-        y.append(kline.closePrice())
+        y.append(kline.close_price())
 
     return y   
 
 
 def sort_x(kline_list):
-    """ Sort all close times for x-axis for visualisation of graph
+    """ 
+    Sort all close times for x-axis for visualisation of graph
+    
+    Params: 
+    ----------------
+    kline_list : list
+        List of klines
+
+    Returns : 
+    ----------------
+    []
+    Array of y coordinates(Close prices)
     """
 
     x = []
 
     for kline in kline_list:
-        x.append(kline.closeTime())
+        x.append(kline.close_time())
 
     return x

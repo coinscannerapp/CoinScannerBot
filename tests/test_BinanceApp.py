@@ -1,161 +1,162 @@
 import binanceApp
+from lib.entities.kline_data import *
+from lib.entities.price_move import *
 from datetime import datetime
-from lib.entities import kline_data
-from lib.entities import price_move
 
-kline1 = kline_data.KlineData(
+kline1 = KlineData(
     symbol = 'BTCUSDT',
-    OpenTime= 1527480000000,
-    OpenPrice = '7000.00000000',
-    HighPrice = '7400.00000000',
-    LowPrice = '7000.00000000',
-    ClosePrice = '7400.00000000',
-    Volume = '1763.2933430',
-    CloseTime = 1527483599999,
-    QuoteAssetVol = '12944855.34880205',
-    NumberOfTrades = 15272,
+    open_time= 1527480000000,
+    open_price = '7000.00000000',
+    high_price = '7400.00000000',
+    low_price = '7000.00000000',
+    close_price = '7400.00000000',
+    volume = '1763.2933430',
+    close_time = 1527483599999,
+    quote_asset_vol = '12944855.34880205',
+    number_of_trades = 15272,
 )
-kline2 = kline_data.KlineData(
+kline2 = KlineData(
     symbol = 'BTCUSDT',
-    OpenTime= 1527483600000,
-    OpenPrice = '7400.00000000',
-    HighPrice = '7800.00000000',
-    LowPrice = '7300.00000000',
-    ClosePrice = '7800.00000000',
-    Volume = '1763.2933430',
-    CloseTime = 1527487199999,
-    QuoteAssetVol = '12944855.34880205',
-    NumberOfTrades = 15272,
+    open_time= 1527483600000,
+    open_price = '7400.00000000',
+    high_price = '7800.00000000',
+    low_price = '7300.00000000',
+    close_price = '7800.00000000',
+    volume = '1763.2933430',
+    close_time = 1527487199999,
+    quote_asset_vol = '12944855.34880205',
+    number_of_trades = 15272,
 )
-kline3 = kline_data.KlineData(
+kline3 = KlineData(
     symbol = 'BTCUSDT',
-    OpenTime= 1527487200000,
-    OpenPrice = '7800.00000000', 
-    HighPrice = '7500.00000000',
-    LowPrice = '7300.00000000',
-    ClosePrice = '7500.00000000', #low 7500 fall -300
-    Volume = '1763.2933430',
-    CloseTime = 1527490799999,
-    QuoteAssetVol = '12944855.34880205',
-    NumberOfTrades = 15272,
+    open_time= 1527487200000,
+    open_price = '7800.00000000', 
+    high_price = '7500.00000000',
+    low_price = '7300.00000000',
+    close_price = '7500.00000000', #low 7500 fall -300
+    volume = '1763.2933430',
+    close_time = 1527490799999,
+    quote_asset_vol = '12944855.34880205',
+    number_of_trades = 15272,
 )
-kline4 = kline_data.KlineData(
+kline4 = KlineData(
     symbol = 'BTCUSDT',
-    OpenTime= 1527490800000,
-    OpenPrice = '7500.00000000', 
-    HighPrice = '7500.00000000',
-    LowPrice = '6700.00000000',
-    ClosePrice = '6800.00000000', #low -1000, fall -700
-    Volume = '1763.2933430',
-    CloseTime = 1527494399999,
-    QuoteAssetVol = '12944855.34880205',
-    NumberOfTrades = 15272,
+    open_time= 1527490800000,
+    open_price = '7500.00000000', 
+    high_price = '7500.00000000',
+    low_price = '6700.00000000',
+    close_price = '6800.00000000', #low -1000, fall -700
+    volume = '1763.2933430',
+    close_time = 1527494399999,
+    quote_asset_vol = '12944855.34880205',
+    number_of_trades = 15272,
 )
-kline5 = kline_data.KlineData(
+kline5 = KlineData(
     symbol = 'BTCUSDT',
-    OpenTime= 1527494400000,
-    OpenPrice = '6800.00000000', 
-    HighPrice = '7100.00000000',
-    LowPrice = '6800.00000000',
-    ClosePrice = '7100.00000000', 
-    Volume = '1763.2933430',
-    CloseTime = 1527497999999,
-    QuoteAssetVol = '12944855.34880205',
-    NumberOfTrades = 15272,
+    open_time= 1527494400000,
+    open_price = '6800.00000000', 
+    high_price = '7100.00000000',
+    low_price = '6800.00000000',
+    close_price = '7100.00000000', 
+    volume = '1763.2933430',
+    close_time = 1527497999999,
+    quote_asset_vol = '12944855.34880205',
+    number_of_trades = 15272,
 )
-kline6 = kline_data.KlineData(
+kline6 = KlineData(
     symbol = 'BTCUSDT',
-    OpenTime= 1527498000000,
-    OpenPrice = '7100.00000000', 
-    HighPrice = '7100.00000000',
-    LowPrice = '7100.00000000',
-    ClosePrice = '7100.00000000', 
-    Volume = '1763.2933430',
-    CloseTime = 15275015999999,
-    QuoteAssetVol = '12944855.34880205',
-    NumberOfTrades = 15272,
+    open_time= 1527498000000,
+    open_price = '7100.00000000', 
+    high_price = '7100.00000000',
+    low_price = '7100.00000000',
+    close_price = '7100.00000000', 
+    volume = '1763.2933430',
+    close_time = 15275015999999,
+    quote_asset_vol = '12944855.34880205',
+    number_of_trades = 15272,
 )
-kline7= kline_data.KlineData(
+kline7= KlineData(
     symbol = 'BTCUSDT',
-    OpenTime= 1527501600000,
-    OpenPrice = '7100.00000000', 
-    HighPrice = '8100.00000000',
-    LowPrice = '7100.00000000',
-    ClosePrice = '8000.00000000', 
-    Volume = '1763.2933430',
-    CloseTime = 1527501959999,
-    QuoteAssetVol = '12944855.34880205',
-    NumberOfTrades = 15272,
+    open_time= 1527501600000,
+    open_price = '7100.00000000', 
+    high_price = '8100.00000000',
+    low_price = '7100.00000000',
+    close_price = '8000.00000000', 
+    volume = '1763.2933430',
+    close_time = 1527501959999,
+    quote_asset_vol = '12944855.34880205',
+    number_of_trades = 15272,
 )
 
 
-def test_IsFirstKline():
-    priceMove = price_move.PriceMove()
-    result = priceMove.isFirstKline()
+def test_is_first_kline():
+    price_move_obj = PriceMove()
+    result = price_move_obj.is_first_kline()
     expected = True
     assert expected == result 
 
-def test_NotFirstKline():
-    priceMove = price_move.PriceMove()
-    priceMove.addKline(kline1)
-    result = priceMove.isFirstKline()
+def test_not_first_kline():
+    price_move_obj = PriceMove()
+    price_move_obj.add_kline(kline1)
+    result = price_move_obj.is_first_kline()
+    result = price_move_obj.is_first_kline()
     expected = False
     assert expected == result
 
-def test_PriceDiff():
-    priceMove = price_move.PriceMove()
-    priceMove.addKline(kline1)
-    priceMove.addKline(kline2)
-    result = priceMove.priceDiff()
+def test_price_diff():
+    price_move_obj = PriceMove()
+    price_move_obj.add_kline(kline1)
+    price_move_obj.add_kline(kline2)
+    result = price_move_obj.price_diff()
     expected = 800
     assert expected == result
 
-def test_PriceDiffNegative():
-    priceMove = price_move.PriceMove()
-    priceMove.addKline(kline3)
-    priceMove.addKline(kline4)
-    result = priceMove.priceDiff()
+def test_price_diff_negative():
+    price_move_obj = PriceMove()
+    price_move_obj.add_kline(kline3)
+    price_move_obj.add_kline(kline4)
+    result = price_move_obj.price_diff()
     expected = -1000
     assert expected == result
 
-def test_PercentDiff():
-    priceMove = price_move.PriceMove()
-    priceMove.addKline(kline1)
-    priceMove.addKline(kline2)
-    result = priceMove.percentDiff()
+def test_percent_diff():
+    price_move_obj = PriceMove()
+    price_move_obj.add_kline(kline1)
+    price_move_obj.add_kline(kline2)
+    result = price_move_obj.percent_diff()
     expected = 11.43
     assert expected == float(result)
 
-def test_PercentDiffNegative():
-    priceMove = price_move.PriceMove()
-    priceMove.addKline(kline3)
-    priceMove.addKline(kline4)
-    result = priceMove.percentDiff()
+def test_percent_diff_negative():
+    price_move_obj = PriceMove()
+    price_move_obj.add_kline(kline3)
+    price_move_obj.add_kline(kline4)
+    result = price_move_obj.percent_diff()
     expected = -12.82
     assert expected == float(result)
 
-def test_PriceDiffSeveral():
-    priceMove = price_move.PriceMove()
-    priceMove.addKline(kline1)
-    priceMove.addKline(kline2)
-    priceMove.addKline(kline3)
+def test_price_diff_several():
+    price_move_obj = PriceMove()
+    price_move_obj.add_kline(kline1)
+    price_move_obj.add_kline(kline2)
+    price_move_obj.add_kline(kline3)
     # priceMove.addKline(kline4)
-    result = priceMove.priceDiff()
+    result = price_move_obj.price_diff()
     expected = 800 # third kline is not added since its going in opposite direction
     assert expected == result
 
-def test_SameDirection():
-    priceMove = price_move.PriceMove()
-    priceMove.addKline(kline1)
-    result = priceMove.klineIsSameDirection(kline2)
+def test_same_direction():
+    price_move_obj = PriceMove()
+    price_move_obj.add_kline(kline1)
+    result = price_move_obj.kline_is_same_direction(kline2)
     expected = True
     assert expected == result
 
-def test_NotSameDirection():
-    priceMove = price_move.PriceMove()
-    priceMove.addKline(kline1)
-    priceMove.addKline(kline2)
-    result = priceMove.klineIsSameDirection(kline3)
+def test_not_same_direction():
+    price_move_obj = PriceMove()
+    price_move_obj.add_kline(kline1)
+    price_move_obj.add_kline(kline2)
+    result = price_move_obj.kline_is_same_direction(kline3)
     expected = False
     assert expected == result
 
@@ -171,97 +172,101 @@ def test_NotSameDirection():
 #     result = priceMove.klineIsSameDirection(kline5) #After kline4 the priceMove is overall negative
 #     assert expected == result
 
-def test_Impact():
-    priceMove = price_move.PriceMove()
-    priceMove.addKline(kline1)
-    result = priceMove.klineImpact(kline2)
+def test_impact():
+    price_move_obj = PriceMove()
+    price_move_obj.add_kline(kline1)
+    result = price_move_obj.kline_impact(kline2)
     expected = 100
     assert expected == result
 
-def test_NegativeImpact():
-    priceMove = price_move.PriceMove()
-    priceMove.addKline(kline1)
-    priceMove.addKline(kline2)
-    result = priceMove.klineImpact(kline3)
+def test_negative_impact():
+    price_move_obj = PriceMove()
+    price_move_obj.add_kline(kline1)
+    price_move_obj.add_kline(kline2)
+    result = price_move_obj.kline_impact(kline3)
     expected = -37.5
     assert expected == float(result)
-def test_durationSecs():
-    priceMove = price_move.PriceMove()
-    priceMove.addKline(kline1)
-    priceMove.addKline(kline2)
-    result = priceMove.durationSecs()
+
+def test_duration_secs():
+    price_move_obj = PriceMove()
+    price_move_obj.add_kline(kline1)
+    price_move_obj.add_kline(kline2)
+    result = price_move_obj.duration_secs()
     # expected = datetime.timedelta(hours=1, minutes=59, seconds=59, milliseconds=999) #when returning datetime.timedelta
     expected = 60*60*2 # 2 hours
     assert expected == result
-def test_durationHours():
-    priceMove = price_move.PriceMove()
-    priceMove.addKline(kline1)
-    priceMove.addKline(kline2)
-    result = priceMove.durationHours()
+
+def test_duration_hours():
+    price_move_obj = PriceMove()
+    price_move_obj.add_kline(kline1)
+    price_move_obj.add_kline(kline2)
+    result = price_move_obj.duration_hours()
     expected = 2
     assert expected == result
-def test_overloadedPlusOperator():
-    priceMove1 = price_move.PriceMove()
-    priceMove1.addKline(kline1)
-    priceMove1.addKline(kline2)
-    priceMove2 = price_move.PriceMove()
-    priceMove2.addKline(kline3)
-    priceMove2.addKline(kline4)
-    combined = priceMove1 + priceMove2
-    result = combined.durationHours()
+
+def test_overloaded_plus_operator():
+    price_move1 = PriceMove()
+    price_move1.add_kline(kline1)
+    price_move1.add_kline(kline2)
+    price_move2 = PriceMove()
+    price_move2.add_kline(kline3)
+    price_move2.add_kline(kline4)
+    combined = price_move1 + price_move2
+    result = combined.duration_hours()
     expected = 4
     # assert expected == result
-    assert combined.startPrice() == 7000
-    assert combined.endPrice() == 6800
-    assert datetime.fromtimestamp(1527480000000/1000) == combined.startTime()
-    assert datetime.fromtimestamp(1527494399999/1000) == combined.endTime()
-    assert combined.lowPrice() == 6700
-    assert combined.highPrice() == 7800
-def test_isPowerMove():
-    priceMove = price_move.PriceMove()
-    priceMove.addKline(kline1)
-    priceMove.addKline(kline2)
-    result = priceMove.isPowerMove()
+    assert combined.start_price() == 7000
+    assert combined.end_price() == 6800
+    assert datetime.fromtimestamp(1527480000000/1000) == combined.start_time()
+    assert datetime.fromtimestamp(1527494399999/1000) == combined.end_time()
+    assert combined.low_price() == 6700
+    assert combined.high_price() == 7800
+
+def test_is_power_move():
+    price_move_obj = PriceMove()
+    price_move_obj.add_kline(kline1)
+    price_move_obj.add_kline(kline2)
+    result = price_move_obj.is_power_move()
     expected = True
     assert expected == result
 
-def test_notPowerMove():
-    priceMove = price_move.PriceMove()
-    priceMove.addKline(kline5)
-    priceMove.addKline(kline6)
-    result = priceMove.isPowerMove()
+def test_not_power_move():
+    price_move_obj = PriceMove()
+    price_move_obj.add_kline(kline5)
+    price_move_obj.add_kline(kline6)
+    result = price_move_obj.is_power_move()
     expected = False
     assert expected == result
 
-def test_hoursAppart():
-    priceMove1 = price_move.PriceMove()
-    priceMove2 = price_move.PriceMove()
-    priceMove1.addKline(kline1)
-    priceMove2.addKline(kline3)
-    result = priceMove2.hoursAppart(priceMove1)
+def test_hours_appart():
+    price_move1 = PriceMove()
+    price_move2 = PriceMove()
+    price_move1.add_kline(kline1)
+    price_move2.add_kline(kline3)
+    result = price_move2.hours_appart(price_move1)
     expected = 1
     assert expected == result
 
-def test_isPowerRaise():
-    priceMove1 = price_move.PriceMove()
-    priceMove1.addKline(kline5)
-    priceMove1.addKline(kline6) 
-    priceMove1.addKline(kline7) #Now its a powerraise
-    assert priceMove1.startPrice() == 6800.0
-    assert priceMove1.endPrice() == 8000.0
-    assert priceMove1.percentDiff() > 10
-    assert priceMove1.durationHours() < 5
-    assert priceMove1.isPowerRaise() == True
+def test_is_power_raise():
+    price_move1 = PriceMove()
+    price_move1.add_kline(kline5)
+    price_move1.add_kline(kline6) 
+    price_move1.add_kline(kline7) #Now its a powerraise
+    assert price_move1.start_price() == 6800.0
+    assert price_move1.end_price() == 8000.0
+    assert price_move1.percent_diff() > 10
+    assert price_move1.duration_hours() < 5
+    assert price_move1.is_power_raise() == True
 
-def test_createBase():
-    priceMove1 = price_move.PriceMove()
-    priceMove2 = price_move.PriceMove()
-    priceMove1.addKline(kline3)
-    priceMove1.addKline(kline4) #Now its a powerdrop
-    priceMove2.addKline(kline5)
-    priceMove2.addKline(kline6) 
-    priceMove2.addKline(kline7) #Now its a powerraise
-    base = priceMove2.createBase(priceMove1)
-    assert priceMove2.isPowerRaise() == True
-    assert priceMove1.isPowerDrop() == True
+def test_create_base():
+    price_move1 = PriceMove()
+    price_move2 = PriceMove()
+    price_move1.add_kline(kline3)
+    price_move1.add_kline(kline4) #Now its a powerdrop
+    price_move2.add_kline(kline5)
+    price_move2.add_kline(kline6) 
+    price_move2.add_kline(kline7) #Now its a powerraise
+    base = price_move2.create_base(price_move1)
+    assert price_move2.is_power_raise() == True
+    assert price_move1.is_power_drop() == True
     assert base != None

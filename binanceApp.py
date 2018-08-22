@@ -1,7 +1,7 @@
 from lib.data_fetch_modules import get_data_module
 from lib.helper_modules import util_module as util
-from lib.entities import kline_data
-from lib.entities import price_move
+from lib.entities.kline_data import *
+from lib.entities.price_move import *
 from lib import constants
 from lib.visualisation import matplotlib_visual
 # external
@@ -20,6 +20,7 @@ client = Client(constants.KEY, constants.SECRET)
 
 
 def main():
+    
     klines = get_data_module.get_historical_klines(
         client, constants.SYMBOL, KLINE_INTERVAL, constants.START, constants.END)
     kline_list = populate_kline_list(klines)
@@ -47,38 +48,38 @@ def main():
 def populate_kline_list(klines):
     kline_list = []
     for kline in klines:
-        klineObj = kline_data.KlineData(
+        kline_obj = KlineData(
             symbol=constants.SYMBOL,
-            OpenTime=kline[0],
-            OpenPrice=kline[1],
-            HighPrice=kline[2],
-            LowPrice=kline[3],
-            ClosePrice=kline[4],
-            Volume=kline[5],
-            CloseTime=kline[6],
-            QuoteAssetVol=kline[7],
-            NumberOfTrades=kline[8],
+            open_time=kline[0],
+            open_price=kline[1],
+            high_price=kline[2],
+            low_price=kline[3],
+            close_price=kline[4],
+            volume=kline[5],
+            close_time=kline[6],
+            quote_asset_vol=kline[7],
+            number_of_trades=kline[8],
         )
-        kline_list.append(klineObj)
+        kline_list.append(kline_obj)
     return kline_list
 
 
 def populate_price_move_list(kline_list):
     list_of_moves = list()
-    price_move_Obj = price_move.PriceMove()
+    price_move_obj = PriceMove()
     for k in kline_list:
         # if addKline returns false its time to start a new PriceMove
-        if not price_move_Obj.addKline(k):
-            list_of_moves.append(price_move_Obj)
-            price_move_Obj = price_move.PriceMove()
-            price_move_Obj.addKline(k)
+        if not price_move_obj.add_kline(k):
+            list_of_moves.append(price_move_obj)
+            price_move_obj = PriceMove()
+            price_move_obj.add_kline(k)
     return list_of_moves
 
 
 def filter_power_moves(list_of_moves):
     power_moves = list()
     for m in list_of_moves:
-        if m.isPowerMove():
+        if m.is_power_move():
             print('POWER MOOOOOOOVE')
             power_moves.append(m)
     return power_moves
@@ -86,21 +87,21 @@ def filter_power_moves(list_of_moves):
 
 def create_bases(kline_list):
     list_of_bases = list()
-    price_move_Obj = price_move.PriceMove()
+    price_move_Obj = PriceMove()
     last_power_move = None
     for k in kline_list:
         # if addKline returns false its time to start a new PriceMove
-        if not price_move_Obj.addKline(k):
-            if price_move_Obj.isPowerMove():
+        if not price_move_Obj.add_kline(k):
+            if price_move_Obj.is_power_move():
                 print('POWERMOVE')
                 if last_power_move != None:
                     print('NOT None')
-                    base = price_move_Obj.createBase(last_power_move)
+                    base = price_move_Obj.create_base(last_power_move)
                     if(base != None):
                         list_of_bases.append(base)
                 last_power_move = price_move_Obj
-                price_move_Obj = price_move.PriceMove()
-                price_move_Obj.addKline(k)
+                price_move_Obj = PriceMove()
+                price_move_Obj.add_kline(k)
     return list_of_bases
 
 
