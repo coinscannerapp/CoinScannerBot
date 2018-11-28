@@ -5,7 +5,7 @@ name = "pypi"
 
 [packages]
 pytest = "*"
-requests = "*"
+requests = "~=2.20.0"
 python-binance = "*"
 twisted = {file = "http://fstab.net//pypi//simple//twisted//Twisted-18.4.0-cp36-cp36m-win_amd64.whl"}
 
